@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Martinez_Marithe_ShoppingCartActivity\\Martinez_Marithe_ShoppingCartActivity.csproj",
+      "projectUniqueName": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Martinez_Marithe_ShoppingCartActivity.csproj",
       "projectName": "Martinez_Marithe_ShoppingCartActivity",
-      "projectPath": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Martinez_Marithe_ShoppingCartActivity\\Martinez_Marithe_ShoppingCartActivity.csproj",
+      "projectPath": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Martinez_Marithe_ShoppingCartActivity.csproj",
       "packagesPath": "C:\\Users\\Steph\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Martinez_Marithe_ShoppingCartActivity\\obj\\",
+      "outputPath": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

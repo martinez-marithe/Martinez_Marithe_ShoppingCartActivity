@@ -1,11 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Martinez_Marithe_ShoppingCartActivity
+public class Product
 {
-    internal class Product
+    public int Id;
+    public string Name;
+    public double Price;
+    public int RemainingStock;
+
+    public void DisplayProduct()
     {
-        //anotara
+        Console.WriteLine(Id + ". " + Name + " - P" + Price + " (Stock: " + RemainingStock + ")");
+    }
+
+    public double GetItemTotal(int quantity)
+    {
+        return Price * quantity;
     }
 }

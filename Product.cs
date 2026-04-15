@@ -7,15 +7,14 @@ public class Product
     public double Price;
     public int RemainingStock;
 
-    public void DisplayProduct()
-    {
-        Console.WriteLine(Id + ". " + Name + " - P" + Price + " (Stock: " + RemainingStock + ")");
-    }
+    public void DisplayProduct() { Console.WriteLine(Id + ". " + Name + " - P" + Price + " (Stock: " + RemainingStock + ")"); }
+    public bool HasEnoughStock(int qty) { return RemainingStock >= qty; }
+    public void DeductStock(int qty) { RemainingStock -= qty; }
 }
 
 class Program
 {
-    static void main()
+    static void Main()
     {
         Product[] store = new Product[5];
         store[0] = new Product { Id = 1, Name = "Mineral Sunscreen", Price = 1200, RemainingStock = 10 };
@@ -25,9 +24,22 @@ class Program
         store[4] = new Product { Id = 5, Name = "Gentle Facial Cleanser", Price = 560, RemainingStock = 15 };
 
         Console.WriteLine("=== GLOW & CARE SKINCARE STORE ===");
-        for (int i = 0; i < store.Length; i++)
+        for (int i = 0; i < store.Length; i++) store[i].DisplayProduct();
+
+        Console.Write("\nEnter Product # (1-5): ");
+        if (int.TryParse(Console.ReadLine(), out int pNum) && pNum >= 1 && pNum <= 5)
         {
-            store[i].DisplayProduct();
+            Product selected = store[pNum - 1];
+            Console.Write("Enter Quantity: ");
+            if (int.TryParse(Console.ReadLine(), out int qty) && qty > 0)
+            {
+                if (selected.HasEnoughStock(qty))
+                {
+                    selected.DeductStock(qty);
+                    Console.WriteLine("Stock deducted. Item ready for cart.");
+                }
+                else { Console.WriteLine("Not enough stock!"); }
+            }
         }
         Console.ReadKey();
     }

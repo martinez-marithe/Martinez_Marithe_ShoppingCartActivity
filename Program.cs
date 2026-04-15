@@ -1,1 +1,1 @@
-﻿//empty
+﻿// empty, main entry point placeholder. The full implementation of the shopping cart system is located in Product.cs

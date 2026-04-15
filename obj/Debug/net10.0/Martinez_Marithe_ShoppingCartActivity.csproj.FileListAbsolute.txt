@@ -1,0 +1,5 @@
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.AssemblyInfoInputs.cache
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.AssemblyInfo.cs
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.csproj.CoreCompileInputs.cache
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.sourcelink.json

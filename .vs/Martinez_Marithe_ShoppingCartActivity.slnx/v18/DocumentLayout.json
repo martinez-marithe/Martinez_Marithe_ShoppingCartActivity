@@ -51,7 +51,8 @@
               "RelativeToolTip": "README.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-04-14T18:05:25.089Z"
+              "WhenOpened": "2026-04-14T18:05:25.089Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -59,9 +60,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-14T18:01:41.718Z",
               "EditorCaption": ""

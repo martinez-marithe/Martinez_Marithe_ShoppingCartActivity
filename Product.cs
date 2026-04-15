@@ -1,5 +1,11 @@
 ﻿using System;
 
+public class CartItem
+{
+    public Product Product;
+    public int Quantity;
+    public double Subtotal;
+}
 public class Product
 {
     public int Id;
@@ -8,6 +14,7 @@ public class Product
     public int RemainingStock;
 
     public void DisplayProduct() { Console.WriteLine(Id + ". " + Name + " - P" + Price + " (Stock: " + RemainingStock + ")"); }
+    public double GetItemTotal(int qty) {  return Price *  qty; }
     public bool HasEnoughStock(int qty) { return RemainingStock >= qty; }
     public void DeductStock(int qty) { RemainingStock -= qty; }
 }
@@ -23,24 +30,50 @@ class Program
         store[3] = new Product { Id = 4, Name = "Cleansing Oil", Price = 800, RemainingStock = 12 };
         store[4] = new Product { Id = 5, Name = "Gentle Facial Cleanser", Price = 560, RemainingStock = 15 };
 
-        Console.WriteLine("=== GLOW & CARE SKINCARE STORE ===");
-        for (int i = 0; i < store.Length; i++) store[i].DisplayProduct();
+        CartItem[] cart = new CartItem[10];
+        int cartCount = 0;
+        string choice;
 
-        Console.Write("\nEnter Product # (1-5): ");
-        if (int.TryParse(Console.ReadLine(), out int pNum) && pNum >= 1 && pNum <= 5)
+        do
         {
-            Product selected = store[pNum - 1];
-            Console.Write("Enter Quantity: ");
-            if (int.TryParse(Console.ReadLine(), out int qty) && qty > 0)
+            Console.Clear();
+            Console.WriteLine("=== GLOW & CARE SKINCARE STORE ===");
+            for (int i = 0; i < store.Length; i++) store[i].DisplayProduct();
+
+
+            Console.Write("\nEnter Product # (1-5): ");
+            if (int.TryParse(Console.ReadLine(), out int pNum) && pNum >= 1 && pNum <= 5)
             {
-                if (selected.HasEnoughStock(qty))
+
+                Product selected = store[pNum - 1];
+                Console.Write("Enter Quantity: ");
+                if (int.TryParse(Console.ReadLine(), out int qty) && qty > 0)
                 {
-                    selected.DeductStock(qty);
-                    Console.WriteLine("Stock deducted. Item ready for cart.");
+                    if (selected.HasEnoughStock(qty))
+                    {
+                        int found = -1;
+                        for (int j = 0; j < cartCount; j++)
+                        {
+                            if (cart[j].Product.Id == selected.Id) { found = j; break; }
+                        }
+
+                        if (found != -1)
+                        {
+                            cart[found].Quantity += qty;
+                            cart[found].Subtotal += selected.GetItemTotal(qty);
+                        }
+                        else
+                        {
+                            cart[cartCount] = new CartItem { Product = selected, Quantity = qty, Subtotal = selected.GetItemTotal(qty) };
+                            cartCount++;
+                        }
+                        selected.DeductStock(qty);
+                        Console.WriteLine("Added to cart!");
+                    }
                 }
-                else { Console.WriteLine("Not enough stock!"); }
             }
-        }
-        Console.ReadKey();
+            Console.Write("Shop more? (Y/N): ");
+            choice = Console.ReadLine().ToUpper();
+        } while (choice == "Y" && cartCount < 10);
     }
 }

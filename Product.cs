@@ -32,48 +32,93 @@ class Program
 
         CartItem[] cart = new CartItem[10];
         int cartCount = 0;
-        string choice;
+        string choice = "N";
 
         do
         {
             Console.Clear();
             Console.WriteLine("=== GLOW & CARE SKINCARE STORE ===");
-            for (int i = 0; i < store.Length; i++) store[i].DisplayProduct();
-
+            for (int i = 0; i < store.Length; i++) 
+            {
+                store[i].DisplayProduct();
+            }
 
             Console.Write("\nEnter Product # (1-5): ");
             if (int.TryParse(Console.ReadLine(), out int pNum) && pNum >= 1 && pNum <= 5)
             {
-
                 Product selected = store[pNum - 1];
-                Console.Write("Enter Quantity: ");
-                if (int.TryParse(Console.ReadLine(), out int qty) && qty > 0)
-                {
-                    if (selected.HasEnoughStock(qty))
-                    {
-                        int found = -1;
-                        for (int j = 0; j < cartCount; j++)
-                        {
-                            if (cart[j].Product.Id == selected.Id) { found = j; break; }
-                        }
 
-                        if (found != -1)
+                if (selected.RemainingStock > 0)
+                {
+                    Console.Write("Enter Quantity: ");
+                    if (int.TryParse(Console.ReadLine(), out int qty) && qty > 0)
+                    {
+                        if (selected.HasEnoughStock(qty))
                         {
-                            cart[found].Quantity += qty;
-                            cart[found].Subtotal += selected.GetItemTotal(qty);
+                            int found = -1;
+                            for (int j = 0; j < cartCount; j++)
+                            {
+                                if (cart[j].Product.Id == selected.Id) { found = j; break; }
+                            }
+
+                            if (found != -1)
+                            {
+                                cart[found].Quantity += qty;
+                                cart[found].Subtotal += selected.GetItemTotal(qty);
+                                selected.DeductStock(qty);
+                                Console.WriteLine("Updated cart quantity!");
+                            }
+                            else if (cartCount < 10)
+                            {
+                                cart[cartCount] = new CartItem { Product = selected, Quantity = qty, Subtotal = selected.GetItemTotal(qty) };
+                                cartCount++;
+                                selected.DeductStock(qty);
+                                Console.WriteLine("Added to cart!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Cart is full (Max 10 items)!");
+                            }
                         }
-                        else
-                        {
-                            cart[cartCount] = new CartItem { Product = selected, Quantity = qty, Subtotal = selected.GetItemTotal(qty) };
-                            cartCount++;
-                        }
-                        selected.DeductStock(qty);
-                        Console.WriteLine("Added to cart!");
+                        else { Console.WriteLine("Not enough stock."); }
                     }
+                    else { Console.WriteLine("Invalid quantity."); }
                 }
+                else { Console.WriteLine("Item is out of stock!"); }
             }
-            Console.Write("Shop more? (Y/N): ");
-            choice = Console.ReadLine().ToUpper();
-        } while (choice == "Y" && cartCount < 10);
+            else { Console.WriteLine("Invalid product."); }
+
+            Console.Write("\nShop more? (Y/N): ");
+            choice = Console.ReadLine()?.ToUpper() ?? "N";
+
+        } while (choice == "Y");
+
+        Console.Clear();
+        Console.WriteLine("=== YOUR RECEIPT ===");
+        double grandTotal = 0;
+        for (int i = 0; i < cartCount; i++)
+        {
+            Console.WriteLine(cart[i].Product.Name + " x" + cart[i].Quantity + " = P" + cart[i].Subtotal);
+            grandTotal += cart[i].Subtotal;
+        }
+
+        double discount = grandTotal >= 5000 ? grandTotal * 0.10 : 0;
+        double finalTotal = grandTotal - discount;
+
+        Console.WriteLine("\nGrand Total: P" + grandTotal);
+        if (discount > 0)
+        {
+            Console.WriteLine("Discount (10%): -P" + discount);
+        }
+        Console.WriteLine("FINAL TOTAL: P" + finalTotal);
+
+        Console.WriteLine("\n--- UPDATED STORE INVENTORY ---");
+        for (int i = 0; i < store.Length; i++)
+        {
+            store[i].DisplayProduct();
+        }
+
+        Console.WriteLine("\nThank you for glowing with us, have a great day and stay hydrated!");
+        Console.ReadKey();                
     }
 }

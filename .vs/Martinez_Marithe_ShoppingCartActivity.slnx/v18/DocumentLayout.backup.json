@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0D264233-0133-2941-4EDB-E2B296B820AD}|Martinez_Marithe_ShoppingCartActivity.csproj|c:\\users\\steph\\source\\repos\\martinez_marithe_shoppingcartactivity\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D264233-0133-2941-4EDB-E2B296B820AD}|Martinez_Marithe_ShoppingCartActivity.csproj|solutionrelative:product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0D264233-0133-2941-4EDB-E2B296B820AD}|Martinez_Marithe_ShoppingCartActivity.csproj|c:\\users\\steph\\source\\repos\\martinez_marithe_shoppingcartactivity\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D264233-0133-2941-4EDB-E2B296B820AD}|Martinez_Marithe_ShoppingCartActivity.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D264233-0133-2941-4EDB-E2B296B820AD}|Martinez_Marithe_ShoppingCartActivity.csproj|c:\\users\\steph\\source\\repos\\martinez_marithe_shoppingcartactivity\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D264233-0133-2941-4EDB-E2B296B820AD}|Martinez_Marithe_ShoppingCartActivity.csproj|solutionrelative:product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0D264233-0133-2941-4EDB-E2B296B820AD}|Martinez_Marithe_ShoppingCartActivity.csproj|c:\\users\\steph\\source\\repos\\martinez_marithe_shoppingcartactivity\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
@@ -22,23 +22,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T10:35:03.637Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Product.cs",
               "RelativeDocumentMoniker": "Product.cs",
               "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Product.cs",
               "RelativeToolTip": "Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T18:06:55.436Z",
+              "WhenOpened": "2026-04-26T10:35:01.498Z",
               "EditorCaption": ""
             },
             {
@@ -51,20 +61,12 @@
               "RelativeToolTip": "README.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-04-14T18:05:25.089Z"
+              "WhenOpened": "2026-04-26T10:35:08.919Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T18:01:41.718Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

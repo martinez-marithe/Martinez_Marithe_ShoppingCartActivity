@@ -83,36 +83,73 @@ GLOW & CARE SKINCARE STORE
 ---
 
 ## AI Usage in This Project
-AI tools were used in this project for guidance, debugging, and explanation purposes only.
+AI tools were used in this project for guidance, debugging, and explanation purposes only. The program was written, organized, and tested by the student.
  
-### Where AI was used:
-- To understand how to properly create and organize classes and methods
-- To help fix small errors and improve the flow of the program
-- To clarify how input validation works using int.TryParse()
-- To get guidance on structuring the shopping cart system
+### 1. Specific parts where AI was used:
+- Class Structure and Object-Oriented Programming:
+  - Guidance on how to create classes such as `Product` and `CartItem`
+  - Understanding how to define fields (Id, Name, Price, RemainingStock)
+  - Understanding how to create and use methods like `DisplayProduct()` and `GetItemTotal()`
+- Program Flow and Looping:
+  - Guidance on how to structure the program from menu display → user input → validation → cart processing → receipt output
+  - Understanding how a `do-while` loop works for continuous user interaction
+- Input Validation:
+ - Learning how to use `int.TryParse()` to safely handle user input
+  - Applying validation for:
+    - Product number (valid range only)
+    - Quantity (must be a positive number)
+- Cart Logic
+  - Understanding how to store items using an array (`CartItem[]`)
+  - Learning how to check if an item already exists in the cart
+  - Updating quantity and subtotal instead of adding duplicate entries
+- Stock Management
+  - Guidance on checking available stock before allowing a purchase
+  - Using simple methods such as `HasEnoughStock()` and `DeductStock()`
+- Debugging and Error Fixing
+  - Fixing issues such as:
+    - Incorrect or repeated conditions
+    - Loop structure issues
+    - Misplaced braces affecting program flow
+    - Input handling problems in the continue prompt (Y/N)
 
-### Why AI was used:
-- To better understand the lesson as a beginner in C#
-- To make sure the program logic is correct and working properly
-- To improve code readability and organization
+### 2. Why AI was used:
+- To understand basic C# programming concepts as a beginner  
+- To check if the program logic is correct  
+- To fix errors more efficiently  
+- To improve code structure and readability  
 
-### Prompts/Questions asked:
-- How to create a Product class with methods in C#
-- How to validate user input using int.TryParse()
-- How to manage product stock and avoid duplicate cart entries
-- How to compute totals and apply discounts
+### 3. Prompts/Questions asked:
+- How to create a Product class with methods in C#?  
+- How to validate user input using int.TryParse()?  
+- How to prevent duplicate items in a cart using arrays?  
+- Why is my loop not working correctly?  
+- How to check stock before deducting quantity?  
+- How to handle invalid input for Y/N prompts?  
+- How to compute totals and apply discounts?
 
-### After using AI for guidance:
-- The code was manually written and adjusted
-- Logic flow was modified based on understanding
-- Variable names and outputs were personalized
-- The program was tested and improved 
+### 4. After using AI for guidance:
+- Rewrote and adjusted the code based on understanding  
+- Fixed logical errors in loops and conditions  
+- Improved input validation handling  
+- Adjusted variable names and output messages  
+- Organized the code for readability  
+- Tested the program and corrected errors manually  
 
-
-AI was not used for direct copying. AI was only used as a support tool for
-learning and guidance. The code was reviewed and understood.
+### 5. Academic integrity statement:
+AI was used only as a guide for understanding concepts, debugging errors, and improving parts of the program.
+All code submitted was:
+- Written by the student  
+- Reviewed and modified manually  
+- Understood before submission  
+The student is able to explain:
+- Program flow  
+- Cart logic  
+- Input validation  
+- Stock management  
+AI was used responsibly.
 
 
 Martinez, Marithe C.
  BSIT 1-2
+ Computer Programming 2
  Polytechnic University of the Philippines - San Pedro Campus

@@ -146,6 +146,7 @@ The student is able to explain:
 - Cart logic  
 - Input validation  
 - Stock management  
+
 AI was used responsibly.
 
 

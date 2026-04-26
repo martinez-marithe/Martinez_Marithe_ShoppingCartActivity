@@ -11,30 +11,42 @@ class Program
         store[3] = new Product { Id = 4, Name = "Cleansing Oil", Price = 800, RemainingStock = 12, Category = "Cleanser" };
         store[4] = new Product { Id = 5, Name = "Gentle Facial Cleanser", Price = 560, RemainingStock = 15, Category = "Cleanser" };
 
+        CartItem[] cart = new CartItem[20];
+        int cartCount = 0;
         bool isAppRunning = true;
+
         while (isAppRunning)
         {
             Console.Clear();
-            Console.WriteLine("=== GLOW & CARE SKINCARE STORE - SEARCH MORE ===");
-            Console.WriteLine("1. Search & Browse");
-            Console.WriteLine("2. Exit");
-            Console.WriteLine("Choice: ");
+            Console.WriteLine("1. Search & Add | 2. View Cart | 3. Exit");
             string choice = Console.ReadLine();
 
             if (choice == "1")
             {
-                Console.Write("Enter keyword (Name/Category): ");
+                Console.Write("Enter search: ");
                 string find = Console.ReadLine().ToLower();
-                Console.WriteLine("\n--- Results ===");
                 for (int i = 0; i < store.Length; i++)
+                    if (store[i].Name.ToLower().Contains(find) || store[i].Category.ToLower().Contains(find)) store[i].DisplayProduct();
+
+                Console.Write("\nID to add: ");
+                int id = int.Parse(Console.ReadLine());
+                Product p = store[id - 1];
+                if (p.RemainingStock > 0)
                 {
-                    if (store[i].Name.ToLower().Contains(find) || store[i].Category.ToLower().Contains(find))
-                        store[i].DisplayProduct();
+                    cart[cartCount++] = new CartItem { Product = p, Quantity = 1, Subtotal = p.Price };
+                    p.DeductStock(1);
+                    Console.WriteLine("Added!");
                 }
+                Console.ReadKey();
+            }
+            else if (choice == "2")
+            {
+                Console.WriteLine("\n--- YOUR CART ---");
+                for (int i = 0; i < cartCount; i++) Console.WriteLine(cart[i].Product.Name + " - P" + cart[i].Subtotal);
                 Console.WriteLine("\nPress any key...");
                 Console.ReadKey();
             }
-            else if (choice == "2") isAppRunning = false;
+            else if (choice == "3") isAppRunning = false;
         }
     }
 }

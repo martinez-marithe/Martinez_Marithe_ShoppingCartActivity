@@ -41,16 +41,30 @@ class Program
             }
             else if (choice == "2")
             {
-                Console.WriteLine("\n--- YOUR CART ---");
-                for (int i = 0; i < cartCount; i++) Console.WriteLine(cart[i].Product.Name + " - P" + cart[i].Subtotal);
-                Console.WriteLine("\nPress any key...");
-                Console.ReadKey();
+                Console.Clear();
+                Console.WriteLine("--- MANAGE CART ---");
+                for (int i = 0; i < cartCount; i++)
+                    Console.WriteLine((i + 1) + ". " + cart[i].Product.Name + " - P" + cart[i].Subtotal);
+
+                Console.WriteLine("\n[R] Remove | [C] Clear | [B] Back");
+                string op = Console.ReadLine().ToUpper();
+
+                if (op == "R") ;
+                {
+                    Console.Write("Remove Item #: ");
+                    int r = int.Parse(Console.ReadLine()) - 1;
+                    if (r >= 0 && r < cartCount)
+                    {
+                        cart[r].Product.ReturnStock(cart[r].Quantity);
+                        for (int i = r; i < cartCount - 1; i++) cart[i] = cart[i + 1];
+                        cartCount--;
+                    }
+                    else if (op == "C")
+                        for (int i = 0; i < cartCount; i++) cart[i].Product.ReturnStock(cart[i].Quantity);
+                    cartCount = 0;
+                }
             }
             else if (choice == "3") isAppRunning = false;
         }
     }
 }
-
-
-
-            

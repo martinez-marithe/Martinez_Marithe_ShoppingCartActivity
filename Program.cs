@@ -57,7 +57,7 @@ class Program
                     continue;
                 }
                 
-                                Console.Write("Quantity: ");
+                Console.Write("Quantity: ");
                 int qty;
 
                 if (!int.TryParse(Console.ReadLine(), out qty) || qty <= 0)
@@ -191,8 +191,28 @@ class Program
 
                     Console.ReadKey();
                 }
+
+                else if (op == "2")
+                {
+                    Console.Write("Item #: ");
+                    int r;
+
+                    if (int.TryParse(Console.ReadLine(), out r) && r >= 1 && r <= cartCount)
+                    {
+                        cart[r - 1].Product.ReturnStock(cart[r - 1].Quantity);
+
+                        for (int i = r - 1; i < cartCount - 1; i++)
+                        {
+                            cart[i] = cart[i + 1];
+                        }
+
+                        cartCount--;
+                        Console.WriteLine("Removed.");
+                    }
+
+                    Console.ReadKey();
+                }
             }
         }
     }
 } 
-    

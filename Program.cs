@@ -13,58 +13,30 @@ class Program
 
         CartItem[] cart = new CartItem[20];
         int cartCount = 0;
-        bool isAppRunning = true;
 
-        while (isAppRunning)
+        Console.Write("Enter ID: ");
+        int id = int.Parse(Console.ReadLine());
+
+        Console.Write("Quantity: ");
+        int qty = int.Parse(Console.ReadLine());
+
+        Product p = store[id - 1];
+
+        if (p.HasEnoughStock(qty))
         {
-            Console.Clear();
-            Console.WriteLine("1. Search & Add | 2. View Cart | 3. Exit");
-            string choice = Console.ReadLine();
-
-            if (choice == "1")
+            cart[cartCount] = new CartItem
             {
-                Console.Write("Enter search: ");
-                string find = Console.ReadLine().ToLower();
-                for (int i = 0; i < store.Length; i++)
-                    if (store[i].Name.ToLower().Contains(find) || store[i].Category.ToLower().Contains(find)) store[i].DisplayProduct();
+                Product = p,
+                Quantity = qty,
+                Subtotal = p.GetItemTotal(qty)
+            };
 
-                Console.Write("\nID to add: ");
-                int id = int.Parse(Console.ReadLine());
-                Product p = store[id - 1];
-                if (p.RemainingStock > 0)
-                {
-                    cart[cartCount++] = new CartItem { Product = p, Quantity = 1, Subtotal = p.Price };
-                    p.DeductStock(1);
-                    Console.WriteLine("Added!");
-                }
-                Console.ReadKey();
-            }
-            else if (choice == "2")
-            {
-                Console.Clear();
-                Console.WriteLine("--- MANAGE CART ---");
-                for (int i = 0; i < cartCount; i++)
-                    Console.WriteLine((i + 1) + ". " + cart[i].Product.Name + " - P" + cart[i].Subtotal);
+            cartCount++;
+            p.DeductStock(qty);
 
-                Console.WriteLine("\n[R] Remove | [C] Clear | [B] Back");
-                string op = Console.ReadLine().ToUpper();
-
-                if (op == "R") ;
-                {
-                    Console.Write("Remove Item #: ");
-                    int r = int.Parse(Console.ReadLine()) - 1;
-                    if (r >= 0 && r < cartCount)
-                    {
-                        cart[r].Product.ReturnStock(cart[r].Quantity);
-                        for (int i = r; i < cartCount - 1; i++) cart[i] = cart[i + 1];
-                        cartCount--;
-                    }
-                    else if (op == "C")
-                        for (int i = 0; i < cartCount; i++) cart[i].Product.ReturnStock(cart[i].Quantity);
-                    cartCount = 0;
-                }
-            }
-            else if (choice == "3") isAppRunning = false;
+            Console.WriteLine("Added to cart!");
         }
+
+        Console.ReadKey();
     }
 }

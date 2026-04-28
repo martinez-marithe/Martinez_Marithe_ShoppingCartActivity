@@ -26,10 +26,11 @@ class Program
             Console.Clear();
             Console.WriteLine("=== GLOW & CARE SKINCARE STORE V2.0 ===");
             Console.WriteLine("1. Search & Add");
-            Console.WriteLine("2. Manage Cart");
-            Console.WriteLine("3. Order History");
-            Console.WriteLine("4. Exit");
-            Console.Write("Select: ");
+            Console.WriteLine("2. Filter by Category");
+            Console.WriteLine("3. Manage Cart");
+            Console.WriteLine("4. Order History");
+            Console.WriteLine("5. Exit");
+            Console.Write("Select No.: ");
 
             string choice = Console.ReadLine();
 
@@ -37,6 +38,7 @@ class Program
             {
                 Console.Write("Search: ");
                 string keyword = Console.ReadLine().ToLower();
+                bool found = false;
 
                 for (int i = 0; i < store.Length; i++)
                 {
@@ -44,19 +46,28 @@ class Program
                         store[i].Category.ToLower().Contains(keyword))
                     {
                         store[i].DisplayProduct();
+                        found = true;
                     }
+                }
+
+                if (!found)
+                {
+                    Console.WriteLine("No products found.");
+                    Console.Write("\n[Press any key to continue...]");
+                    Console.ReadKey();
+                    continue;
                 }
 
                 Console.Write("\nEnter ID: ");
                 int id;
 
-                if (!int.TryParse(Console.ReadLine(), out id) || id > store.Length)
+                if (!int.TryParse(Console.ReadLine(), out id) || id < 1 || id > store.Length)
                 {
                     Console.WriteLine("Invalid ID.");
                     Console.ReadKey();
                     continue;
                 }
-                
+
                 Console.Write("Quantity: ");
                 int qty;
 
@@ -88,14 +99,50 @@ class Program
                     Console.WriteLine("Not enough stock.");
                 }
 
+                Console.WriteLine("\n[Press any key to continue...]");
                 Console.ReadKey();
             }
 
             else if (choice == "2")
             {
+                Console.WriteLine("\nCategories:");
+                Console.WriteLine("1. Skincare");
+                Console.WriteLine("2. Treatment");
+                Console.WriteLine("3. Cleanser");
+                Console.Write("Select No.: ");
+
+                string catChoice = Console.ReadLine();
+                string selectedCategory = "";
+
+                if (catChoice == "1") selectedCategory = "Skincare";
+                else if (catChoice == "2") selectedCategory = "Treatment";
+                else if (catChoice == "3") selectedCategory = "Cleanser";
+
+                if (selectedCategory == "")
+                {
+                    Console.WriteLine("Invalid Category.");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                for (int i = 0; i < store.Length; i++)
+                {
+                    if (store[i].Category == selectedCategory)
+                    {
+                        store[i].DisplayProduct();
+                    }
+                }
+
+                Console.Write("\n[Press any key to continue...]");
+                Console.ReadKey();
+            }
+
+            else if (choice == "3")
+            { 
                 if (cartCount == 0)
                 {
                     Console.WriteLine("Cart is empty.");
+                    Console.Write("\n[Press any key to continue...]");
                     Console.ReadKey();
                     continue;
                 }
@@ -174,9 +221,12 @@ class Program
                     {
                         if (store[i].RemainingStock <= 5)
                         {
-                            Console.WriteLine(store[i].Name + store[i].RemainingStock + " left");
+                            Console.WriteLine(store[i].Name + " only " + store[i].RemainingStock + " left");
                         }
                     }
+
+                    Console.Write("\n[Press any key to continue...]");
+                    Console.ReadKey();
 
                     historyLog[historyCount] = new Order
                     {
@@ -189,7 +239,6 @@ class Program
                     receiptID++;
                     cartCount = 0;
 
-                    Console.ReadKey();
                 }
 
                 else if (op == "2")
@@ -212,7 +261,87 @@ class Program
 
                     Console.ReadKey();
                 }
+
+                else if (op == "3")
+                {
+                    Console.Write("Item #: ");
+                    int u;
+
+                    if (int.TryParse(Console.ReadLine(), out u) && u >= 1 && u <= cartCount)
+                    {
+                        cart[u - 1].Product.ReturnStock(cart[u - 1].Quantity);
+
+                        Console.Write("New Qty: ");
+                        int newQ;
+
+                        if (int.TryParse(Console.ReadLine(), out newQ) && newQ >= 1 && newQ > 0)
+                        {
+                            if (cart[u - 1].Product.HasEnoughStock(newQ))
+                            {
+                                cart[u - 1].Quantity = newQ;
+                                cart[u - 1].Subtotal = cart[u - 1].Product.GetItemTotal(newQ);
+                                cart[u - 1].Product.DeductStock(newQ);
+
+                                Console.WriteLine("Updated!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not enough stock.");
+                                cart[u - 1].Product.DeductStock(cart[u - 1].Quantity);
+                            }
+                        }
+
+                        Console.ReadKey();
+                    }
+                }
+
+                else if (op == "4")
+                {
+                    for (int i = 0; i < cartCount; i++)
+                    {
+                        cart[i].Product.ReturnStock(cart[i].Quantity);
+                    }
+
+                    cartCount = 0;
+                    Console.WriteLine("Cart cleared.");
+                    Console.ReadKey();
+                }
+            }
+
+            else if (choice == "4")
+            {
+                Console.WriteLine("\nORDER HISTORY");
+
+                for (int i = 0; i < historyCount; i++)
+                {
+                    Console.WriteLine("#" + historyLog[i].ReceiptNo + " - P" + historyLog[i].Total + " - " + historyLog[i].Date);
+                }
+
+                Console.Write("\n[Press any key to continue...]");
+                Console.ReadKey();
+            }
+
+            else if (choice == "5")
+            {
+                string confirm;
+
+                while (true)
+                {
+                    Console.Write("Exit? (Y/N): ");
+                    confirm = Console.ReadLine().ToUpper();
+
+                    if (confirm == "Y" || confirm == "N")
+                        break;
+
+                    Console.WriteLine("Invalid input.");
+                }
+
+                if (confirm == "Y")
+                    running = false;
             }
         }
+
+        Console.WriteLine("\nThank you for glowing with us, have a great day and stay hydrated!");
+        Console.ReadKey();
     }
-} 
+}

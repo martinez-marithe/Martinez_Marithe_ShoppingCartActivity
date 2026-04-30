@@ -45,122 +45,128 @@ class Program
 
             if (choice == "1")
             {
-                Console.Write("Enter product name to search: ");
-                string keyword = Console.ReadLine().ToLower();
-
-                if (keyword == "")
+                while (true)
                 {
-                    Console.WriteLine("Search can't be empty.");
-                    Console.ReadKey();
-                    continue;
-                }
+                    Console.Write("\nEnter product name to search: ");
+                    string keyword = Console.ReadLine().ToLower();
 
-                bool found = false;
-
-                for (int i = 0; i < store.Length; i++)
-                {
-                    if (store[i].Name.ToLower().Contains(keyword) ||
-                        store[i].Category.ToLower().Contains(keyword))
+                    if (keyword == "")
                     {
-                        store[i].DisplayProduct();
-                        found = true;
-                    }
-                }
-
-                if (!found)
-                {
-                    Console.WriteLine("No products found.");
-                    Console.Write("\n[Press any key to continue...]");
-                    Console.ReadKey();
-                    continue;
-                }
-
-                Console.Write("\nEnter ID: ");
-                int id;
-
-                if (!int.TryParse(Console.ReadLine(), out id) || id < 1 || id > store.Length)
-                {
-                    Console.WriteLine("Invalid ID.");
-                    Console.ReadKey();
-                    continue;
-                }
-
-                bool validMatch = store[id - 1].Name.ToLower().Contains(keyword) ||
-                                  store[id - 1].Category.ToLower().Contains(keyword);
-
-                if (!validMatch)
-                {
-                    Console.WriteLine("Selected product is not in search result.");
-                    Console.ReadKey();
-                    continue;
-                }
-
-                Console.Write("Quantity: ");
-                int qty;
-
-                if (!int.TryParse(Console.ReadLine(), out qty) || qty <= 0)
-                {
-                    Console.WriteLine("Invalid quantity.");
-                    Console.ReadKey();
-                    continue;
-                }
-
-                if (cartCount >= cart.Length)
-                {
-                    Console.WriteLine("Cart is full.");
-                    Console.ReadKey();
-                    continue;
-                }
-
-                Product p = store[id - 1];
-
-                if (p.HasEnoughStock(qty))
-                {
-                    int existing = -1;
-                    for (int i = 0; i < cartCount; i++)
-                    {
-                        if (cart[i].Product.Id == p.Id)
-                            existing = i;
+                        Console.WriteLine("Search can't be empty.");
+                        Console.ReadKey();
+                        continue;
                     }
 
-                    if (existing != -1)
+                    bool found = false;
+
+                    for (int i = 0; i < store.Length; i++)
                     {
-                        cart[existing].Quantity = cart[existing].Quantity + qty;
-                        cart[existing].Subtotal = p.GetItemTotal(cart[existing].Quantity);
-                        p.DeductStock(qty);
-                        Console.WriteLine("Cart updated!");
+                        if (store[i].Name.ToLower().Contains(keyword) ||
+                            store[i].Category.ToLower().Contains(keyword))
+                        {
+                            store[i].DisplayProduct();
+                            found = true;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        Console.WriteLine("No products found.");
+                        Console.Write("\n[Press any key to continue...]");
+                        Console.ReadKey();
+                        continue;
+                    }
+
+                    Console.Write("\nEnter ID: ");
+                    int id;
+
+                    if (!int.TryParse(Console.ReadLine(), out id) || id < 1 || id > store.Length)
+                    {
+                        Console.WriteLine("Invalid ID.");
+                        Console.ReadKey();
+                        continue;
+                    }
+
+                    bool validMatch = store[id - 1].Name.ToLower().Contains(keyword) ||
+                                      store[id - 1].Category.ToLower().Contains(keyword);
+
+                    if (!validMatch)
+                    {
+                        Console.WriteLine("Selected product is not in search result.");
+                        Console.ReadKey();
+                        continue;
+                    }
+
+                    Console.Write("Quantity: ");
+                    int qty;
+
+                    if (!int.TryParse(Console.ReadLine(), out qty) || qty <= 0)
+                    {
+                        Console.WriteLine("Invalid quantity.");
+                        Console.ReadKey();
+                        continue;
+                    }
+
+                    if (cartCount >= cart.Length)
+                    {
+                        Console.WriteLine("Cart is full.");
+                        Console.ReadKey();
+                        continue;
+                    }
+
+                    Product p = store[id - 1];
+
+                    if (p.HasEnoughStock(qty))
+                    {
+                        int existing = -1;
+                        for (int i = 0; i < cartCount; i++)
+                        {
+                            if (cart[i].Product.Id == p.Id)
+                                existing = i;
+                        }
+
+                        if (existing != -1)
+                        {
+                            cart[existing].Quantity = cart[existing].Quantity + qty;
+                            cart[existing].Subtotal = p.GetItemTotal(cart[existing].Quantity);
+                            p.DeductStock(qty);
+                            Console.WriteLine("Cart updated!");
+                        }
+                        else
+                        {
+                            cart[cartCount] = new CartItem
+                            {
+                                Product = p,
+                                Quantity = qty,
+                                Subtotal = p.GetItemTotal(qty)
+                            };
+                            cartCount++;
+                            p.DeductStock(qty);
+
+                            Console.WriteLine("Added to cart!");
+                        }
                     }
                     else
                     {
-                        cart[cartCount] = new CartItem
-                        {
-                            Product = p,
-                            Quantity = qty,
-                            Subtotal = p.GetItemTotal(qty)
-                        };
-                        cartCount++;
-                        p.DeductStock(qty);
-
-                        Console.WriteLine("Added to cart!");
+                        Console.WriteLine("Not enough stock.");
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Not enough stock.");
-                }
 
-                string addMore;
+                    string addMore;
 
-                while (true)
-                {
-                    Console.Write("Add another item? (Y/N): ");
-                    addMore = Console.ReadLine().ToUpper();
+                    while (true)
+                    {
+                        Console.Write("Add another item? (Y/N): ");
+                        addMore = Console.ReadLine().ToUpper();
 
-                    if (addMore == "Y" || addMore == "N")
+                        if (addMore == "Y" || addMore == "N")
+                            break;
+
+                        Console.WriteLine("Invalid input. Please enter Y or N only.");
+                    }
+
+                    if (addMore == "N")
                         break;
-
-                    Console.WriteLine("Invalid input. Please enter Y or N only.");
-                }
+                }    
             }
 
             else if (choice == "2")
@@ -239,6 +245,11 @@ class Program
                         break;
                 
                     Console.WriteLine("Invalid input. Enter 1-5 only.");
+                }
+
+                if (op == "5")
+                {
+                    continue;
                 }
 
                 if (op == "1")

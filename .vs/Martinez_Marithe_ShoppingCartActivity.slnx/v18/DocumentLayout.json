@@ -32,15 +32,11 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAQwJ4AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T10:35:03.637Z",
+              "WhenOpened": "2026-04-30T18:03:25.603Z",
               "IsPinned": true,
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -50,10 +46,10 @@
               "RelativeDocumentMoniker": "Product.cs",
               "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\Product.cs",
               "RelativeToolTip": "Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T10:35:01.498Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-30T18:03:30.646Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -63,9 +59,18 @@
               "RelativeDocumentMoniker": "README.md",
               "ToolTip": "C:\\Users\\Steph\\source\\repos\\Martinez_Marithe_ShoppingCartActivity\\README.md",
               "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJQAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-04-26T10:35:08.919Z"
+              "WhenOpened": "2026-04-30T18:03:37.801Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

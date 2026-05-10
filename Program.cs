@@ -11,10 +11,10 @@ class Program
         Product[] store = new Product[5];
 
         store[0] = new SkincareProduct(1, "Mineral Sunscreen", 1200, 10, "Skincare", 50);
-        store[1] = new Product (2, "AHA/BHA Exfoliant Set", 5500, 3, "Treatment");
-        store[2] = new Product (3, "Vitamin C Serum", 1900, 7, "Treatment");
-        store[3] = new Product (4, "Cleansing Oil", 800, 12, "Cleanser");
-        store[4] = new Product (5, "Gentle Facial Cleanser", 560, 15, "Cleanser");
+        store[1] = new Product(2, "AHA/BHA Exfoliant Set", 5500, 3, "Treatment");
+        store[2] = new Product(3, "Vitamin C Serum", 1900, 7, "Treatment");
+        store[3] = new Product(4, "Cleansing Oil", 800, 12, "Cleanser");
+        store[4] = new Product(5, "Gentle Facial Cleanser", 560, 15, "Cleanser");
 
         CartItem[] cart = new CartItem[20];
         int cartCount = 0;
@@ -174,7 +174,7 @@ class Program
 
                     if (addMore == "N")
                         break;
-                }    
+                }
             }
 
             else if (choice == "2")
@@ -183,7 +183,7 @@ class Program
                 Console.WriteLine("1. Skincare");
                 Console.WriteLine("2. Treatment");
                 Console.WriteLine("3. Cleanser");
-                
+
                 string catChoice;
 
                 while (true)
@@ -215,13 +215,13 @@ class Program
                         {
                             store[i].DisplayProduct();
                         }
-                    }   
+                    }
                 }
                 Console.ReadKey();
             }
-           
+
             else if (choice == "3")
-            { 
+            {
                 if (cartCount == 0)
                 {
                     Console.WriteLine("Cart is empty.");
@@ -240,25 +240,25 @@ class Program
                         cart[i].Product.GetName() + " x" +
                         cart[i].Quantity + " = P" +
                         cart[i].Subtotal);
-                    
+
                     total += cart[i].Subtotal;
                 }
 
                 string op;
 
-                while(true)
+                while (true)
                 {
 
-                Console.WriteLine("\n1. Checkout");
-                Console.WriteLine("2. Remove Item");
-                Console.WriteLine("3. Update item quantity");
-                Console.WriteLine("4. Clear Cart");
-                Console.WriteLine("5. Back");
+                    Console.WriteLine("\n1. Checkout");
+                    Console.WriteLine("2. Remove Item");
+                    Console.WriteLine("3. Update item quantity");
+                    Console.WriteLine("4. Clear Cart");
+                    Console.WriteLine("5. Back");
 
-                Console.Write("Choice No.: ");
-                op = Console.ReadLine();
+                    Console.Write("Choice No.: ");
+                    op = Console.ReadLine();
 
-                if (op == "1" || op == "2" || op == "3" || op == "4" || op == "5")
+                    if (op == "1" || op == "2" || op == "3" || op == "4" || op == "5")
                         break;
 
                     Console.WriteLine("Invalid input. Enter 1-5 only.");

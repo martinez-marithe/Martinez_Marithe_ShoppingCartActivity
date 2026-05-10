@@ -22,6 +22,6 @@ public class SkincareProduct : Product
 
     public void DisplaySkincareProduct()
     {
-        Console.WriteLine(GetId() + ". [" + GetCategory() + "] " + GetName() + " - P" + GetPrice() + " (Stock: " + GetremainingStock() + ") SPF: " + spfLevel);
+        Console.WriteLine(GetId() + ". [" + GetCategory() + "] " + GetName() + " - P" + GetPrice() + " (Stock: " + GetRemainingStock() + ") SPF: " + spfLevel);
     }
 }

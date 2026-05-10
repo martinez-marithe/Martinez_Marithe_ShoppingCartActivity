@@ -10,11 +10,11 @@ class Program
     {
         Product[] store = new Product[5];
 
-        store[0] = new Product { Id = 1, Name = "Mineral Sunscreen", Price = 1200, RemainingStock = 10, Category = "Skincare" };
-        store[1] = new Product { Id = 2, Name = "AHA/BHA Exfoliant Set", Price = 5500, RemainingStock = 3, Category = "Treatment" };
-        store[2] = new Product { Id = 3, Name = "Vitamin C Serum", Price = 1900, RemainingStock = 7, Category = "Treatment" };
-        store[3] = new Product { Id = 4, Name = "Cleansing Oil", Price = 800, RemainingStock = 12, Category = "Cleanser" };
-        store[4] = new Product { Id = 5, Name = "Gentle Facial Cleanser", Price = 560, RemainingStock = 15, Category = "Cleanser" };
+        store[0] = new SkincareProduct(1, "Mineral Sunscreen", 1200, 10, "Skincare", 50);
+        store[1] = new Product (2, "AHA/BHA Exfoliant Set", 5500, 3, "Treatment");
+        store[2] = new Product (3, "Vitamin C Serum", 1900, 7, "Treatment");
+        store[3] = new Product (4, "Cleansing Oil", 800, 12, "Cleanser");
+        store[4] = new Product (5, "Gentle Facial Cleanser", 560, 15, "Cleanser");
 
         CartItem[] cart = new CartItem[20];
         int cartCount = 0;
@@ -61,10 +61,18 @@ class Program
 
                     for (int i = 0; i < store.Length; i++)
                     {
-                        if (store[i].Name.ToLower().Contains(keyword) ||
-                            store[i].Category.ToLower().Contains(keyword))
+                        if (store[i].GetName().ToLower().Contains(keyword) ||
+                            store[i].GetCategory().ToLower().Contains(keyword))
                         {
-                            store[i].DisplayProduct();
+                            if (store[i] is SkincareProduct)
+                            {
+                                SkincareProduct sp = (SkincareProduct)store[i];
+                                sp.DisplaySkincareProduct();
+                            }
+                            else
+                            {
+                                store[i].DisplayProduct();
+                            }
                             found = true;
                         }
                     }
@@ -87,8 +95,8 @@ class Program
                         continue;
                     }
 
-                    bool validMatch = store[id - 1].Name.ToLower().Contains(keyword) ||
-                                      store[id - 1].Category.ToLower().Contains(keyword);
+                    bool validMatch = store[id - 1].GetName().ToLower().Contains(keyword) ||
+                                      store[id - 1].GetCategory().ToLower().Contains(keyword);
 
                     if (!validMatch)
                     {
@@ -121,7 +129,7 @@ class Program
                         int existing = -1;
                         for (int i = 0; i < cartCount; i++)
                         {
-                            if (cart[i].Product.Id == p.Id)
+                            if (cart[i].Product.GetId() == p.GetId())
                                 existing = i;
                         }
 
@@ -196,13 +204,22 @@ class Program
 
                 for (int i = 0; i < store.Length; i++)
                 {
-                    if (store[i].Category == selectedCategory)
-                        store[i].DisplayProduct();
+                    if (store[i].GetCategory() == selectedCategory)
+                    {
+                        if (store[i] is SkincareProduct)
+                        {
+                            SkincareProduct sp = (SkincareProduct)store[i];
+                            sp.DisplaySkincareProduct();
+                        }
+                        else
+                        {
+                            store[i].DisplayProduct();
+                        }
+                    }   
                 }
-
                 Console.ReadKey();
             }
-
+           
             else if (choice == "3")
             { 
                 if (cartCount == 0)
@@ -220,10 +237,10 @@ class Program
                 for (int i = 0; i < cartCount; i++)
                 {
                     Console.WriteLine((i + 1) + ". " +
-                        cart[i].Product.Name + " x" +
+                        cart[i].Product.GetName() + " x" +
                         cart[i].Quantity + " = P" +
                         cart[i].Subtotal);
-
+                    
                     total += cart[i].Subtotal;
                 }
 
@@ -241,9 +258,9 @@ class Program
                 Console.Write("Choice No.: ");
                 op = Console.ReadLine();
 
-                    if (op == "1" || op == "2" || op == "3" || op == "4" || op == "5")
+                if (op == "1" || op == "2" || op == "3" || op == "4" || op == "5")
                         break;
-                
+
                     Console.WriteLine("Invalid input. Enter 1-5 only.");
                 }
 
@@ -287,7 +304,7 @@ class Program
 
                     for (int i = 0; i < cartCount; i++)
                     {
-                        Console.WriteLine(cart[i].Product.Name + " x" +
+                        Console.WriteLine(cart[i].Product.GetName() + " x" +
                             cart[i].Quantity + " = P" +
                             cart[i].Subtotal);
                     }
@@ -303,9 +320,9 @@ class Program
 
                     for (int i = 0; i < store.Length; i++)
                     {
-                        if (store[i].RemainingStock <= 5)
+                        if (store[i].GetRemainingStock() <= 5)
                         {
-                            Console.WriteLine(store[i].Name + " has only " + store[i].RemainingStock + " stocks left.");
+                            Console.WriteLine(store[i].GetName() + " has only " + store[i].GetRemainingStock() + " stocks left.");
                             lowStockFound = true;
                         }
                     }

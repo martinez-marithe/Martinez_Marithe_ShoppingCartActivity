@@ -24,7 +24,7 @@ public class Product
     public int GetId() { return id; }
     public string GetName() { return name; }
     public double GetPrice() { return price; }
-    public int GetremainingStock() { return remainingStock; }
+    public int GetRemainingStock() { return remainingStock; }
     public string GetCategory() { return category; }
 
     public void SetId(int id) { this.id = id; }

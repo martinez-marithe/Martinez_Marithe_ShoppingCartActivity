@@ -3,3 +3,13 @@ C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net1
 C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.AssemblyInfo.cs
 C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.csproj.CoreCompileInputs.cache
 C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.sourcelink.json
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\bin\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.exe
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\bin\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.deps.json
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\bin\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.runtimeconfig.json
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\bin\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.dll
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\bin\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.pdb
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.dll
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\refint\Martinez_Marithe_ShoppingCartActivity.dll
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.pdb
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\Martinez_Marithe_ShoppingCartActivity.genruntimeconfig.cache
+C:\Users\Steph\source\repos\Martinez_Marithe_ShoppingCartActivity\obj\Debug\net10.0\ref\Martinez_Marithe_ShoppingCartActivity.dll
